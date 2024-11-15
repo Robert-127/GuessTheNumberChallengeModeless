@@ -14,3 +14,22 @@ import random
  # This code is like a fine wine...            print(f"Connected by {addr}")
             play_game(conn)
 
+def play_game(conn):
+    number_to_guess = random.randint(1, 100)
+    print(f"Number to guess (for debugging): {number_to_guess}")
+    attempts = 0
+
+    while True:
+        guess = receive_guess(conn)
+        attempts += 1
+        response = check_guess(guess, number_to_guess, attempts)
+        conn.sendall(response.encode())
+        if "Correct!" in response:
+            break
+
+def receive_guess(conn):
+    data = conn.recv(1024)
+    if not data:
+        return None
+    return int(data.decode())
+

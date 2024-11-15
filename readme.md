@@ -1,0 +1,1 @@
+Rapid Number Guessing: A fast-paced variant of the number guessing game where players must make their guesses within a limited timeframe. Can you think on your feet?
